@@ -26,3 +26,4 @@ for x in fileList:
         # The value for each row will be one name out of the tuple therefore (x,)
         # will denote a one element tuple for each file ending in .txt
             c.execute("INSERT INTO tbl_txt (col_fList) VALUES (?)", (x,))
+            print(x)
