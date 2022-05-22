@@ -13,7 +13,7 @@ class Twins():
     def getTwinsInfo(self):
         enter_name = input("Enter your name: ")
         enter_father = input("Enter your fathers name: ")
-        enter_id_number = input("Ener your id number: ")
+        enter_id_number = input("Enter your id number: ")
         enter_dob = input("Enter your date of birth: ")
         if (enter_father == self.father and enter_id_number == self.id_number):
             print("Welcome back, {}!".format(enter_name))
@@ -40,7 +40,7 @@ class Brady(Twins):
     def getTwinsInfo(self):
         enter_name = input("Enter your name: ")
         enter_father = input("Enter your fathers name: ")
-        enter_ssn = input("Enter your ssn: ")
+        enter_ssn = int(enter_ssn)
         if (enter_name == self.name and enter_ssn == self.ssn):
             print("Welcome back, {}".format(enter_name))
         else:
