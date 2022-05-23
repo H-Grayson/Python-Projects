@@ -9,7 +9,9 @@ class student(ABC):
 
 class graduationReq(student):
     def mathGrade(self, total):
-        print('You meet the graduation requirement for Math!'.format(total))
+        print('Your gpa is {}, you meet the graduation requirement for Math!'.format(total))
 
 obj = graduationReq()
+obj.studentGPAReq("70")
 obj.mathGrade("82")
+
