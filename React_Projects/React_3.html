@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>        
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <style>
+            body {
+                opacity: 1;
+                transition: 1s opacity;
+            }
+
+            body.fade-out {
+                opacity: 0;
+                transition: none;
+            }
+            
+            html {
+                background-color: white;
+            }
+
+
+            /* Button used to open the contact form - fixed at the bottom of the page */
+            .open-button {
+            background-color: #555;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            opacity: 0.8;
+            position: fixed;
+            bottom: 23px;
+            right: 28px;
+            width: 280px;
+            }
+
+            /* The popup form - hidden by default */
+            .form-popup {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            right: 15px;
+            border: 3px solid #f1f1f1;
+            z-index: 9;
+            }
+
+            /* Add styles to the form container */
+            .form-container {
+            max-width: 300px;
+            padding: 10px;
+            background-color: white;
+            }
+
+            /* Full-width input fields */
+            .form-container input[type=text], .form-container input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            border: none;
+            background: #f1f1f1;
+            }
+
+            /* When the inputs get focus, do something */
+            .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+            }
+
+            /* Set a style for the submit/login button */
+            .form-container .btn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom:10px;
+            opacity: 0.8;
+            }
+
+            /* Add a red background color to the cancel button */
+            .form-container .cancel {
+            background-color: red;
+            }
+
+            /* Add some hover effects to buttons */
+            .form-container .btn:hover, .open-button:hover {
+            opacity: 1;
+            }
+        </style>
+    </head>
+
+    <body>
+        <p style="font-size:1vw;">Resizing font using vw unit</p>
+        <div id='JSX'></div>
+        <form name="myForm" onsubmit="return validateForm()" method="post">
+            <label for="fname">First name: </label><br>
+            <input type="text" id="fname" name="fname"><br>
+            <label for="lname">Last name: </label><br>
+            <input type="text" id="lname" name="lname"><br>
+            <label for="pnumber">Phone number: </label><br>
+            <input type="phone" id="pnumber" name="pnumber"><br>
+            <input type="submit" value="Submit">
+        </form>
+
+        <div class="form-popup" id="myForm">
+            <form action="/action_page.php" class="form-container">
+                <h1>Login</h1>
+
+                <label for="email"><br>Email</br></label>
+                <input type="text" palceholder="Enter Email" name="email" required>
+
+                <label for="psw"><br>Password</br></label>
+                <input type="password" placeholder="Enter Password" name="psw" required>
+
+                <button type="submit" class="btn">Login</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </form>
+        </div>
+
+        <script>
+            document.body.classList.add('fade-out');
+            window.addEventListener('DOMContentLoaded', () => {
+                document.body.classList.remove('fade-out');
+            });
+
+            function validateForm() {
+                let x = document.forms["myForm"]["fname"].value;
+                if (x == "") {
+                    alert("Name must be filled out");
+                    return false;
+                }
+            }
+
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+
+            console.log(validateForm())
+        </script>
+
+        <script type="text/babel">
+            class Greeting extends React.Component {
+                render() {
+                    return <h1>Hello, World!</h1>
+                }
+            }
+
+            ReactDOM.render(<Greeting />, document.getElementById('JSX'))
+
+
+
+        </script>
+
+    </body>
+</html>
